@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+﻿using Xunit;
 
 namespace ProjectEuler
 {
@@ -20,15 +20,16 @@ namespace ProjectEuler
 
     public class MultiplesOf3and5_Tests
     {
-        [TestCase(10, 23)]
-        [TestCase(1000, 233168)]
-        [TestCase(19564, 89301183)]
-        [TestCase(8456, 16687353)]
+        [Theory]
+        [InlineData(10, 23)]
+        [InlineData(1000, 233168)]
+        [InlineData(19564, 89301183)]
+        [InlineData(8456, 16687353)]
         public void Test(int number, int expectedResult)
         {
             var sut = new MultiplesOf3and5();
             var result = sut.Calculate(number);
-            Assert.That(result, Is.EqualTo(expectedResult));
+            Assert.Equal(expectedResult, result);
         }
     }
 }
